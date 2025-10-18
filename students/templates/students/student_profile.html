@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}student_profile{% endblock title %}
+{% block content %}
+
+<div class="container " style="display:flex">
+  <div class="student-profile">
+    <div class="profile-pic">
+      {% comment %} <img src="{% static 'images/student.jpg' %}" alt="Student Photo"> {% endcomment %}
+    </div>
+    <div class="student-info">
+      <h2>{{ student.username }}</h2>
+      <p><strong>id </strong> {{ student.id }}</p>
+      <p><strong>password:</strong> {{ student.password }}</p>
+      <form method="POST" action="{% url 'logout' %}" >
+         {% csrf_token %}
+         <button type="submit" class="btn button-link">Logout</button>
+       </form>
+    </div>
+  </div>  
+</div>
+{% endblock content %}

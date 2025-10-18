@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}student_Dashboard{% endblock title %}
+{% block content %}
+
+
+<div class="container">
+    <h1>Course</h1>
+    <div id="enrollmentcourse" class="course-grid">
+        {% for course in courses %}
+        <div class="course-card" >
+            <a href="{% url 'course_lessons' course.id %}">
+            <div class="course-image">
+            {% if course.image %}
+            <img src="{{ course.image.url }}" alt="{{ course.title }}">
+            {% else %}
+            <img src="{% static 'default-course.jpg' %}" alt="Default Image">
+            {% endif %}
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">{{course.title }}</h5>
+                <p class="card-text mb-1">{{ course.instructor }}</p>
+                
+            </div>
+
+            </a>
+        </div>
+        {% endfor %}
+        </div>
+
+    </div>
+    {% endblock content %}

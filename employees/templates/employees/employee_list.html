@@ -1,0 +1,39 @@
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+
+      <h2 class="text-center mb-4">Employee List</h2>
+
+      <table class="table table-bordered table-hover text-center">
+        <thead class="table-dark">
+            <tr>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Salary</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for employee in employees %}
+            <tr>
+              <td>{{ employee.id }}</td>
+              <td>{{ employee.username }}</td>
+              <td>{{ employee.salary }}</td>
+              <td>
+                <a href="{% url 'employee_edit' employee.pk %}" class="btn btn-sm btn-warning me-2">Edit</a> 
+                <a href="{% url 'employee_delete' employee.pk %}" class="btn btn-sm btn-danger">Delete</a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">No employees found.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <a href="{% url 'employee_add' %}">Add New employee</a>
+      </div>
+
+
+    </div>
+  </div>
+</div>

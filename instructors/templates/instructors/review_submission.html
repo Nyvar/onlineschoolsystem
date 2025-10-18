@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container py-5">
+  <h2 class="row row-cols-1 row-cols-md-2 g-4">📄 Submitted Assignments</h2>
+
+  {% for submission in submissions %}
+  <div class="col">
+    <div class="card h-100 border-danger shadow-sm">
+      <div class="card-body" >
+         <h5 class="text-primary fw-semibold text-center">Submission #{{ submission.id }}</h5>
+
+          <ul class="list-unstyled mb-4">
+            <li><strong>👤 Student:</strong> {{ submission.student.username }}</li>
+            <li><strong>📚 Course:</strong> {{ submission.assignment.course.title }}</li>
+            <li><strong>📝 Assignment:</strong> {{ submission.assignment.title }}</li>
+          </ul>
+
+          {% if submission.file %}
+            <a href="{{ submission.file.url }}" target="_blank" class="btn btn-outline-primary btn-sm mb-3 w-100">
+              🔍 View PDF
+            </a>
+          {% else %}
+            <div class="text-muted mb-3 text-center">No file attached</div>
+          {% endif %}
+          <form method="post" action="{% url 'checking' submission.id %}">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="number" name="grade" class="form-control border-primary" placeholder="Enter grade (0–100)" min="0" max="100" required>
+              <button type="submit" class="btn btn-primary">✅ Submit Grade</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <div class="alert alert-info text-center">No submissions found.</div>
+  {% endfor %}
+</div>
+{% endblock content %}

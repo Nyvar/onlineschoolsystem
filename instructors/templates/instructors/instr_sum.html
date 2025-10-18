@@ -1,0 +1,40 @@
+
+<div class="container dashboard-container">
+    <h2 class="mb-4">📊 Instructor Dashboard</h2>
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary w-100">
+                <div class="card-body">
+                    <h5 class="card-title">Total Courses</h5>
+                    <p class="card-text fs-4">{{ total_course }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success w-100">
+                <div class="card-body">
+                    <h5 class="card-title">Total Students</h5>
+                    <p class="card-text fs-4">{{ total_students }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning w-100">
+                <div class="card-body">
+                    <h5 class="card-title">salary</h5>
+                    <p class="card-text fs-4">{{ total_salary }}</p>
+                </div>
+            </div>
+        </div>
+       <div class="col-md-3">
+            <a href="{% url 'review_submission'  %}" style="text-decoration: none;">
+                <div class="card text-white bg-danger w-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Assignment UnderReview</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>

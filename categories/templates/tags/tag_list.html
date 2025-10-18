@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+
+      <h2 class="text-center mb-4">tag List</h2>
+
+      <table class="table table-bordered table-hover text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>tag Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for tag in tags %}
+          <tr>
+            <td class="text-start">{{ tag.name }}</td>
+            
+            <td>
+              <a href="{% url 'tag_edit' tag.pk %}" class="btn btn-sm btn-warning me-2">Edit</a>
+              <a href="{% url 'tag_delete' tag.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4">No tags found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="text-center mt-4">
+        <a href="{% url 'tag_add' %}" class="btn btn-success">➕ Add New tag</a>
+      </div>
+
+    </div>
+  </div>
+</div>
